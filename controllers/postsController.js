@@ -1,30 +1,53 @@
-const {Post, sequelize} = require('../models');
+const { request } = require('express');
+const { Post } = require('../models/');
 
 const postsController = {
-    index: async (req, res) => {
-        let posts = await Post.findAll();
-        return res.json(posts);
+    index: async (request, response) => {
+        const posts = await Post.findAll();
+
+        return response.json(posts);
     },
-    create: async (req, res) => {
-        const post = req.body;
-        await Post.create(post);
-        return res.json(post);
-    },
-    update: async (req, res) => {
-        const postId = req.params;
-        const postInfo = req.body;
-        await Post.update(postInfo, { 
-            where: {id: postId.id}
+    show: async(request, response) => {
+        const { id } = request.params;
+
+        const postsUsuario = await Post.findAll({
+            where: {
+                usuarios_id: id
+            }
         });
-        return res.json(postInfo);
+
+        return response.json(postsUsuario);
     },
-    delete: async (req, res) => {
-        const post = req.params;
-        await Post.destroy({ where: {
-            id: post.id
-        }});
-        return res.send('Deletado com sucesso!');
+    create: async (request, response) => {
+        const { texto, img, usuarios_id } = request.body;
+        
+        const novoPost = Post.create({
+            texto, img, usuarios_id
+        })
+
+        return response.json(novoPost);
+    },
+    update: async (request, response) => {
+        const { id } = request.params;
+        const { texto, img, usuarios_id } = request.body;
+        
+        const postAtualizado = Post.update({
+            texto, img, usuarios_id
+        }, {
+            where: {id}
+        })
+
+        return response.json(postAtualizado);
+    },
+    delete: async (request, response) => {
+        const { id } = request.params;
+        
+        const postDeletado = Post.destroy({
+            where: {id}
+        })
+
+        return response.json(postDeletado);
     }
-}
+}   
 
 module.exports = postsController;
