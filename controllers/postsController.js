@@ -5,14 +5,14 @@ const postsController = {
     index: async (request, response) => {
         const posts = await Post.findAll();
 
-        return response.json(posts);
+        return response.render('index', {listaPosts: posts});
     },
     show: async(request, response) => {
-        const { id } = request.params;
+        const { usuarios_id } = request.params;
 
         const postsUsuario = await Post.findAll({
             where: {
-                usuarios_id: id
+                usuarios_id
             }
         });
 
