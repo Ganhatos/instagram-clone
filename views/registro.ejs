@@ -4,30 +4,32 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Instagram - Login</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Login • Instagram</title>
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="shortcut icon" type="image/x-icon" href="https://www.instagram.com/static/images/ico/favicon.ico/36b3ee2d91ed.ico">
 </head>
 <body>
     <main>
         <div class="banner">
-            <img src="img/banner-login.png" alt="Smartphones com demonstração do instagram">
+            <img src="/img/banner-login.png" alt="Smartphones com demonstração do instagram">
             <p>Cadastre-se para ver fotos dos seus amigos</p>
         </div>
-        <div class="login">
-            <img src="img/logo.png" alt="logo instagram" class="logo">
-            <form>
-                <input type="text" name="nome" id="nome" placeholder="Digite o nome">
-                <input type="email" name="email" id="email" placeholder="Digite seu email">
-                <input type="password" name="senha" id="senha" placeholder="Senha">
-                <input type="password" name="senha" id="senha" placeholder="Confirme sua senha">
-                <button type="submit">Cadastre-se</button>
-            </form>
-            <div class="cta-cadastro">
-                <p>Ao se cadastrar, você concorda com nossos <a href="https://help.instagram.com/1896641480634370?ref=ig" target="_blank">Termos, Política de Dados e Política de Cookies.</a> </p>
-            </div>
-            <div class="banner_conectar">
-                <p>Tem uma conta? <a href="login.html">Conecte-se</a> </p>
+        <div class="secao-cadastro">
+            <div class="login">
+                <img src="/img/logo.png" alt="logo instagram" class="logo">
+                <form action="/usuarios" method="POST">
+                    <input type="text" name="nome" id="nome" placeholder="Digite o nome">
+                    <input type="email" name="email" id="email" placeholder="Digite seu email">
+                    <input type="password" name="senha" id="senha" placeholder="Senha">
+                    <input type="password" name="confirmaSenha" id="confirmaSenha" placeholder="Confirme sua senha">
+                    <button type="submit">Cadastre-se</button>
+                </form>
+                <div class="cta-cadastro">
+                    <p>Ao se cadastrar, você concorda com nossos <a href="https://help.instagram.com/1896641480634370?ref=ig" target="_blank">Termos, Política de Dados e Política de Cookies.</a> </p>
+                </div>
+                <div class="banner_conectar">
+                    <p>Tem uma conta? <a href="login">Conecte-se</a> </p>
+                </div>
             </div>
         </div>
     </main>

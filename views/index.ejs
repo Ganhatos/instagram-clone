@@ -15,43 +15,41 @@
         <img src="img/logo.png" alt="Instagram" class="logo">
     </header>
     <main>
-        <% for (let post of listaPosts) { %> 
-            <article>
-                <div class="post-header">
-                    <div class="usuario">
-                        <img src="img/avatar-example.png" alt="Foto de Gabriel">
-                        <strong>Gabriel Brunetti</strong>
-                    </div>
-                    <button><img src="img/icons/more-vertical.svg" alt=""></button>
-                </div>
-                <div class="img-principal" title="Foto da mesa do almoço"></div>
-                <div class="comentarios">
-                    <div class="legenda">
-                        <div class="likes">
-                            <button><img src="img/icons/heart.svg" alt=""></button>
-                            <span>3 likes</span>
+        <section class="lista-posts">
+            <% for (let post of listaPosts) { %> 
+                <article>
+                    <div class="post-header">
+                        <div class="usuario">
+                            <img src="img/avatar-example.png" alt="Foto de <%= post.usuario.nome %>">
+                            <strong> <%= post.usuario.nome %> </strong>
                         </div>
-                        <strong class="data">Postado no dia: 16/04/2020</strong>
+                        <button><img src="img/icons/more-vertical.svg" alt=""></button>
                     </div>
-                    <p>Foto do meu almoço</p>
-                    <ol>
-                        <li>
-                            <p><strong>fulano</strong> Deu até fome!</p>
-                        </li>
-                        <li>
-                            <p><strong>lala</strong> Uhh adorei</p>
-                        </li>
-                        <li>
-                            <p><strong>teste</strong> Prefiro feijoada!</p>
-                        </li>
-                    </ol>
-                </div>
-                <div class="comentar">
-                    <input type="text" name="comentar" id="comentar" class="input-comentar" placeholder="Comentar...">
-                    <button type="submit">Publicar</button>
-                </div>
-            </article>
-        <% } %>
+                    <div class="img-principal" title="Foto da mesa do almoço" style="background-image: url('<%= post.img %>');"></div>
+                    <div class="comentarios">
+                        <div class="legenda">
+                            <p> <%= post.texto %> </p> 
+                            <div class="likes">
+                                <button><img src="img/icons/heart.svg" alt=""></button>
+                                <span><%= post.n_likes %> likes</span>
+                            </div>
+                            <strong class="data">Postado no dia: <%= post.createdAt %> </strong>
+                        </div>
+                        <ol>
+                            <% for (let comentario of post.comentarios) { %>
+                                <li>
+                                    <p><strong> <%= comentario.usuario.nome %> </strong> <%= comentario.texto %> </p>
+                                </li>
+                            <% } %>
+                        </ol>
+                    </div>
+                    <div class="comentar">
+                        <input type="text" name="comentar" id="comentar" class="input-comentar" placeholder="Comentar...">
+                        <button type="submit">Publicar</button>
+                    </div>
+                </article>
+            <% } %>
+        </section>
     </main>
     <footer>
         copyright - 2021

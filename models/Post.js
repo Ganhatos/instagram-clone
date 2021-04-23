@@ -7,11 +7,18 @@ module.exports = (sequelize, DataTypes) => {
             texto: DataTypes.STRING,
             img: DataTypes.STRING,
             usuarios_id: DataTypes.INTEGER,
-            n_likes: DataTypes.INTEGER
+            n_likes: DataTypes.INTEGER,
+            createdAt: {
+                type: DataTypes.DATE,
+                defaultValue: DataTypes.NOW,
+                name: "created_at",
+                field: "created_at"
+            }
         },
         {
             tableName: "posts",
-            timestamps: false
+            timestamps: true,
+            updatedAt: false
         }
     );
 
@@ -19,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
         // relação N:1 (vários posts de 1 usuario)
         Post.belongsTo(models.Usuario, { as: "usuario", foreignKey: "usuarios_id" });
         // relação 1:N (post tem varios comentarios)
-        Post.hasMany(models.Comentario, { as: "comentarios", foreignKey: "posts_id" });
+        Post.hasMany(models.Comentario, { as: "comentarios", foreignKey: "posts_id", otherKey: "usuarios_id" });
         // relação N:M (post tem curtidas de varios usuarios)
         Post.belongsToMany(models.Usuario, {
             as: "curtiu", // alias da relação

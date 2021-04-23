@@ -13,7 +13,7 @@ module.exports = async (req, res, next) => {
     } else if (!nome) {
         res.status(400).json({ erro: "Nome precisa ser informado"});
         return;
-    } else if (senha.length == 0 || senha.length < 6 || senha.length > 12) {
+    } else if (senha.length == 0 || senha.length < 6 && senha.length > 12) {
         res.status(400).json({ erro: "Senha precisa ter entre 6 e 12 caracteres"});
         return;
     } else {

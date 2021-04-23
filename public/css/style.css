@@ -11,7 +11,6 @@ body {
 
 main {
     display: flex;
-    flex-direction: column;
     justify-content: center;
     /* alinhamento na horizontal */
     align-items: center;
@@ -20,9 +19,13 @@ main {
     /* 50px para cima e para baixo, 0px para laterais */
 }
 
+main.lista-posts {
+    flex-direction: column;
+}
+
 .logo {
-    width: 180px;
-    margin-bottom: 30px;
+    width: 200px;
+    margin-bottom: 20px;
 }
 
 .secao-cadastro {
@@ -63,6 +66,7 @@ main {
     border: none;
     font-weight: 800;
     cursor: pointer;
+    border-radius: 5px;
 }
 
 .cta-cadastro {
@@ -70,12 +74,14 @@ main {
     width: 100%;
     border: 1px solid #ccc;
     text-align: center;
+    margin-top: 30px;
 }
 
 header {
     text-align: center;
     width: 100%;
     box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+    padding: 10px;
 }
 
 header .logo {
@@ -91,7 +97,6 @@ article {
 }
 
 article .img-principal {
-    background-image: url('../img/publication_example.jpg');
     background-position: center;
     background-size: cover;
     width: 100%;
