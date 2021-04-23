@@ -1,5 +1,6 @@
 const { request } = require('express');
 const { Post } = require('../models/');
+var moment = require('moment');
 
 const postsController = {
     index: async (request, response) => {
@@ -7,7 +8,11 @@ const postsController = {
             include: {all: true, nested: true}
         });
 
-        return response.render('index', {listaPosts: posts});
+        var tempo = params => {
+            return moment(params).locale('pt-br').startOf('hour').fromNow();
+        }
+
+        return response.render('index', {listaPosts: posts, tempo});
     },
     show: async(request, response) => {
         const { usuarios_id } = request.params;

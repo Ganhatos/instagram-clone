@@ -69,6 +69,11 @@ main.lista-posts {
     border-radius: 5px;
 }
 
+.alert {
+    background-color: rgb(218, 137, 137);
+    color: white;
+}
+
 .cta-cadastro {
     background-color: #fafafa;
     width: 100%;

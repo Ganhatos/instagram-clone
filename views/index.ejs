@@ -32,8 +32,8 @@
                             <div class="likes">
                                 <button><img src="img/icons/heart.svg" alt=""></button>
                                 <span><%= post.n_likes %> likes</span>
-                            </div>
-                            <strong class="data">Postado no dia: <%= post.createdAt %> </strong>
+                            </div> 
+                            <strong class="data">Postado <%= tempo(post.createdAt); %> </strong>
                         </div>
                         <ol>
                             <% for (let comentario of post.comentarios) { %>
